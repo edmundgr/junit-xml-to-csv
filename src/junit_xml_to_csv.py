@@ -1,10 +1,14 @@
-# Used Copilot to convert from Java to Python from https://github.com/onozaty/junit-xml2csv Copyright (c) 2024 onozaty
+"""Command-line module to convert JUnit XML test reports to CSV. """
+
+# Used Copilot to convert from Java to Python
+# from https://github.com/onozaty/junit-xml2csv Copyright (c) 2024 onozaty
 import sys
 import csv
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 def parse_testcase(testcase_elem):
+    """Function to convert xml testcase to a tuple"""
     class_name = testcase_elem.attrib.get('classname', '')
     name = testcase_elem.attrib.get('name', '')
     time = testcase_elem.attrib.get('time', '')
@@ -19,6 +23,7 @@ def parse_testcase(testcase_elem):
     return class_name, name, time, result
 
 def parse_testsuite(suite_elem):
+    """Function to convert xml testsuite to csv. Returns testcases array. Calls parse_testcase()"""
     suite_name = suite_elem.attrib.get('name', '')
     timestamp = suite_elem.attrib.get('timestamp', '')
     testcases = []
@@ -35,6 +40,8 @@ def parse_testsuite(suite_elem):
     return testcases
 
 def parse_testsuites(xml_path):
+    """Function to convert xml testsuites to csv. Returns testcases array. 
+    Calls parse_testsuite()"""
     try:
         tree = ET.parse(xml_path)
         root = tree.getroot()
@@ -52,6 +59,8 @@ def parse_testsuites(xml_path):
     return testcases
 
 def main(xml_dir, csv_path):
+    """main function to convert JUnit xml files for directory to CSV. 
+    Writes CSV header and data. Calls parse_testsuites()."""
     rows = []
     xml_files = list(Path(xml_dir).rglob('*.xml'))
     print(f"Found {len(xml_files)} XML file(s).")
