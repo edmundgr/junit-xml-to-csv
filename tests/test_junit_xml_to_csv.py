@@ -1,5 +1,6 @@
 """Unit tests for junit_xml_to_csv"""
 # pylint: disable=wrong-import-position
+# pylint: disable=duplicate-code
 import sys
 import os
 import unittest
