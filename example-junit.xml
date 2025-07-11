@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ExampleTestSuite" tests="2" failures="1" errors="0" skipped="0" timestamp="2024-06-01T12:00:00" time="0.123">
+    <testcase classname="com.example.ExampleTest" name="testAddition" time="0.045"/>
+    <testcase classname="com.example.ExampleTest" name="testSubtraction" time="0.078">
+      <failure message="expected:&lt;2&gt; but was:&lt;3&gt;" type="AssertionError">
+        <![CDATA[java.lang.AssertionError: expected:<2> but was:<3>
+	at com.example.ExampleTest.testSubtraction(ExampleTest.java:15)
+        ]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>
